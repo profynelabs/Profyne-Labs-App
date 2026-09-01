@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Director Dashboard - PROFYNE LABS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Top Stats -->
+        <section>
+            <h2 class="text-xl font-bold text-indigo-400 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie"></i> টিমের সামারি ড্যাশবোর্ড
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase">মোট টিম মেম্বার</p>
+                        <p class="text-2xl font-bold text-white mt-1">12 জন</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-indigo-500/10 text-indigo-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase">আজকে উপস্থিত</p>
+                        <p class="text-2xl font-bold text-emerald-400 mt-1">10 জন</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-emerald-500/10 text-emerald-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase">আজকের অর্জিত মোট সময়</p>
+                        <p class="text-2xl font-bold text-amber-400 mt-1">74.5 ঘণ্টা</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-amber-500/10 text-amber-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Members Directory -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-users-gear text-indigo-400 mr-2"></i>টিম
+                    মেম্বার কার্ড ডিরেক্টরি</h3>
+                <a href="/register.html"
+                    class="bg-indigo-600 hover:bg-indigo-500 text-xs px-3 py-2 rounded-lg font-medium">
+                    <i class="fa-solid fa-user-plus mr-1"></i> নতুন মেম্বার সাইন-আপ করুন
+                </a>
+            </div>
+
+            <!-- Member Grid Card -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="memberList">
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 flex gap-4 items-center">
+                    <img class="h-14 w-14 rounded-full object-cover border-2 border-indigo-500"
+                        src="/uploads/default-avatar.png" alt="Member">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-bold text-white truncate">মেহেদী হাসান</h4>
+                            <span class="h-2.5 w-2.5 bg-emerald-500 rounded-full" title="Active"></span>
+                        </div>
+                        <p class="text-xs text-indigo-400 font-medium">Graphic Designer</p>
+                        <p class="text-[11px] text-slate-400 mt-1"><i class="fa-solid fa-phone mr-1"></i>+8801700000000
+                        </p>
+                        <div
+                            class="mt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-700/60 pt-1.5">
+                            <span>আজকের কাজ: <strong class="text-amber-400">7.0h</strong></span>
+                            <a href="#" class="text-indigo-400 hover:underline">ভিউ রিপোর্ট</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>
+        async function loadMembers() {
+            try {
+                const res = await fetch('/api/director/members');
+                const members = await res.json();
+
+                const container = document.getElementById('memberContainer');
+                if (!container) return;
+
+                container.innerHTML = members.map(m => `
+                    <div style="border: 1px solid #e5e7eb; padding: 15px; margin: 10px 0; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                        <img src="/uploads/${m.avatar}" width="50" height="50" style="border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h3 style="margin: 0;">${m.name}</h3>
+                            <p style="margin: 3px 0; color: #6b7280;">${m.designation}</p>
+                            <p style="margin: 0;">Status: <b>${m.status}</b> | Check-In: ${m.checkInTime}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        loadMembers();
+    </script>
+</body>
+
+</html>

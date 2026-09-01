@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFYNE LABS - Team Productivity Tracker</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <!-- 1. NAVBAR -->
+    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-3">
+                    <img class="h-9 w-auto rounded-md" src="/images/logo.png" alt="Logo"
+                        onerror="this.src='https://via.placeholder.com/36'">
+                    <div>
+                        <span class="font-bold text-lg tracking-wider text-indigo-400">PROFYNE <span
+                                class="text-white">LABS</span></span>
+                        <p class="text-[10px] text-slate-400 -mt-1 uppercase tracking-wider">Team Productivity Tracker
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#"
+                        class="bg-indigo-600 text-white px-3 py-1.5 rounded-md text-sm font-medium">ড্যাশবোর্ড</a>
+                    <a href="#" class="text-slate-300 hover:bg-slate-700 px-3 py-1.5 rounded-md text-sm font-medium">টিম
+                        মেম্বারস</a>
+                    <a href="#"
+                        class="text-slate-300 hover:bg-slate-700 px-3 py-1.5 rounded-md text-sm font-medium">ওয়ার্কলগ</a>
+                </div>
+
+                <!-- Contact & Profile -->
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden lg:flex flex-col text-right text-xs text-slate-400 border-r border-slate-700 pr-4">
+                        <span><i class="fa-regular fa-envelope text-indigo-400 mr-1"></i>profynelabs@gmail.com</span>
+                        <span><i class="fa-solid fa-phone text-indigo-400 mr-1"></i>+8801604308869</span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <img class="h-9 w-9 rounded-full border-2 border-indigo-500 object-cover"
+                            src="/uploads/default-avatar.png" alt="Profile"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Director&background=6366f1&color=fff'">
+                        <div class="hidden sm:block text-left">
+                            <p class="text-xs font-semibold leading-tight">Md Raihan Parvej</p>
+                            <span
+                                class="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo-500/30">Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- 2. DIRECTOR DASHBOARD: OVERVIEW STATS -->
+        <section>
+            <h2 class="text-xl font-bold text-indigo-400 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-chart-line"></i> পরিচালকের সামারি ড্যাশবোর্ড
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Stat Card 1 -->
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium uppercase">মোট টিম মেম্বার</p>
+                        <p class="text-2xl font-bold text-white mt-1">12 জন</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-indigo-500/10 text-indigo-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+                <!-- Stat Card 2 -->
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium uppercase">আজকে উপস্থিত (On Duty)</p>
+                        <p class="text-2xl font-bold text-emerald-400 mt-1">10 জন</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-emerald-500/10 text-emerald-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                </div>
+                <!-- Stat Card 3 -->
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium uppercase">আজকের মোট কর্মঘণ্টা</p>
+                        <p class="text-2xl font-bold text-amber-400 mt-1">74.5 ঘণ্টা</p>
+                    </div>
+                    <div
+                        class="h-10 w-10 bg-amber-500/10 text-amber-400 rounded-lg flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-business-time"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TEAM MEMBER ACTION PANEL (Check-in & Worklog Input) -->
+        <section class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-user-clock text-indigo-400"></i> আপনার আজকের কর্মঘণ্টা ও কাজ জমা দিন
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Check-in / Out Action -->
+                <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/50 flex flex-col justify-between">
+                    <div>
+                        <p class="text-xs text-slate-400">কাজের স্ট্যাটাস</p>
+                        <span
+                            class="inline-block mt-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            <span class="h-2 w-2 rounded-full bg-emerald-500 inline-block mr-1"></span> Checked In
+                            (09:30 AM)
+                        </span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button
+                            class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2.5 rounded-lg transition">
+                            <i class="fa-solid fa-play mr-1"></i> Start Work
+                        </button>
+                        <button
+                            class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold py-2.5 rounded-lg transition">
+                            <i class="fa-solid fa-stop mr-1"></i> End Work
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Worklog Form -->
+                <div class="lg:col-span-2 space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" placeholder="কাজের ক্যাটাগরি (যেমন: UI Design, Node.js API)"
+                            class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+                        <input type="number" placeholder="ব্যয় হওয়া সময় (ঘণ্টায়)"
+                            class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <textarea rows="2" placeholder="আজ কী কী কাজ সম্পন্ন করেছেন বিস্তারিত লিখুন..."
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"></textarea>
+                    <button
+                        class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">
+                        <i class="fa-solid fa-paper-plane mr-1"></i> কাজের বিবরণ সাবমিট করুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DIRECTOR VIEW: TEAM MEMBERS DIRECTORY -->
+        <section>
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center justify-between">
+                <span><i class="fa-solid fa-users-gear text-indigo-400 mr-2"></i>টিম মেম্বার কার্ড ডিরেক্টরি</span>
+                <button class="bg-indigo-600 hover:bg-indigo-500 text-xs px-3 py-1.5 rounded-lg font-medium">
+                    <i class="fa-solid fa-user-plus mr-1"></i> নতুন মেম্বার যুক্ত করুন
+                </button>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <!-- Member Card Demo -->
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 flex gap-4 items-center">
+                    <img class="h-14 w-14 rounded-full object-cover border-2 border-indigo-500"
+                        src="https://ui-avatars.com/api/?name=Graphic+Designer&background=6366f1&color=fff"
+                        alt="Member Photo">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-bold text-white truncate">আব্দুল্লাহ আল মামুন</h4>
+                            <span class="h-2.5 w-2.5 bg-emerald-500 rounded-full" title="Online"></span>
+                        </div>
+                        <p class="text-xs text-indigo-400 font-medium">Senior Graphic Designer</p>
+                        <p class="text-[11px] text-slate-400 mt-1"><i
+                                class="fa-solid fa-phone text-slate-500 mr-1"></i>+8801700000000</p>
+                        <div
+                            class="mt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-700/60 pt-1.5">
+                            <span>আজকের কর্মঘণ্টা: <strong class="text-amber-400">6.5h</strong></span>
+                            <a href="#" class="text-indigo-400 hover:underline">ডিটেইলস</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <script>
+        document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, password})
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+
+                    if (data.user.role === 'director') {
+                        window.location.href = '/director-dashboard';
+                    } else {
+                        window.location.href = '/member-dashboard';
+                    }
+                } else {
+                    alert(data.message || 'লগইন ব্যর্থ হয়েছে');
+                }
+            } catch (err) {
+                alert('সার্ভারে সমস্যা হচ্ছে!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PROFYNE LABS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-slate-100 flex items-center justify-center min-h-screen px-4">
+
+    <div class="bg-slate-800 border border-slate-700 rounded-xl p-8 max-w-md w-full shadow-2xl space-y-6">
+
+        <div class="text-center">
+            <h1 class="text-2xl font-bold text-indigo-400">PROFYNE <span class="text-white">LABS</span></h1>
+            <p class="text-xs text-slate-400 mt-1">নতুন টিম মেম্বার রেজিস্ট্রেশন প্যানেল</p>
+        </div>
+
+        <form action="/api/auth/register" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">পূর্ণ নাম</label>
+                <input type="text" name="name" required
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">ইমেইল</label>
+                    <input type="email" name="email" required
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">পাসওয়ার্ড</label>
+                    <input type="password" name="password" required
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">পদবী (Position)</label>
+                    <input type="text" name="position" placeholder="e.g. Designer" required
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">মোবাইল নম্বর</label>
+                    <input type="text" name="phone" placeholder="+8801..." required
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">প্রোফাইল ফটো আপলোড করুন</label>
+                <input type="file" name="profileImage" accept="image/*"
+                    class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-500">
+            </div>
+
+            <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-lg text-xs transition">
+                মেম্বার রেজিস্ট্রেশন সম্পন্ন করুন
+            </button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    alert('রেজিস্ট্রেশন সফল হয়েছে! এবার লগইন করুন।');
+                    window.location.href = '/';
+                } else {
+                    alert(data.message || 'ত্রুটি ঘটেছে!');
+                }
+            } catch (err) {
+                alert('সার্ভারে সমস্যা হচ্ছে!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

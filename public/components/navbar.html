@@ -1,0 +1,31 @@
+<nav
+    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #1f2937; color: white;">
+    <div style="font-size: 20px; font-weight: bold;">
+        <a href="/" style="color: white; text-decoration: none;">Profyne Labs</a>
+    </div>
+    <div id="nav-links">
+        <a href="/" style="color: white; margin-right: 15px; text-decoration: none;">Home</a>
+        <a href="/register" style="color: white; margin-right: 15px; text-decoration: none;">Register</a>
+        <a href="/member-dashboard" style="color: white; margin-right: 15px; text-decoration: none;">Member
+            Dashboard</a>
+        <a href="/director-dashboard" style="color: white; margin-right: 15px; text-decoration: none;">Director
+            Dashboard</a>
+    </div>
+</nav>
+
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const navLinks = document.getElementById('nav-links');
+    if (user) {
+        navLinks.innerHTML = `
+            <span style="margin-right: 15px; color: #60a5fa;">Hello, ${user.name}</span>
+            <a href="${user.role === 'director' ? '/director-dashboard' : '/member-dashboard'}" style="color: white; margin-right: 15px; text-decoration: none;">Dashboard</a>
+            <button onclick="logout()" style="background: #ef4444; color: white; border: none; padding: 6px 14px; cursor: pointer; border-radius: 4px;">Logout</button>
+        `;
+    }
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '/';
+    }
+</script>
